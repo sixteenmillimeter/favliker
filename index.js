@@ -47,7 +47,7 @@ console.log(`${ids.length} tweets found in storage`)
  *
  */
 const favPath = 'favorites/list'
-const getFavs = () => {
+function getFavs () {
 	if (process.argv.indexOf('-f') !== -1 || process.argv.indexOf('--flat') !== -1) {
 		return runMarkov()
 	}
@@ -98,11 +98,11 @@ const getFavsPages = (id, cb) => {
 	})
 }
 
-const getRandomArbitrary = (min, max) => {
+function getRandomArbitrary (min, max) {
     return Math.random() * (max - min) + min
 }
 
-const runMarkov = () => {
+function runMarkov () {
 	console.time('markov')
 	const minWords = 8
 	const maxWords = 30
