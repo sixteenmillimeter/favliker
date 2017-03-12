@@ -11,7 +11,7 @@ const flat = `${dir}flat.txt`
 const logs = './logs/'
 const results = `${logs}/results.log`
 
-const cfgProcess = JSON.parse(fs.readFileSync('./process.json'))
+const cfgProcess = require('./process.json')
 const cfg = {
 	consumer_key : cfgProcess.apps[0].env.CONSUMER_KEY,
 	consumer_secret : cfgProcess.apps[0].env.CONSUMER_SECRET,
@@ -36,7 +36,7 @@ if (!fs.existsSync(flat)) {
 }
 
 const idsRaw = fs.readFileSync(stored, 'utf8').split('\n')
-const ids = idsRaw.map(obj => { return obj.split(',')[0]; })
+const ids = idsRaw.map(obj => { return obj.split(',')[0] })
 let mostRecent
 
 console.log(`${ids.length} tweets found in storage`)
