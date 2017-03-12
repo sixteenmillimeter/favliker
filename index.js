@@ -50,7 +50,7 @@ function flag (name = null) {
 		if (process.argv.indexOf(single) !== -1 && process.argv.indexOf(name) !== -1) {
 			return false
 		} else {
-
+			return true
 		} 
 	}
 }
