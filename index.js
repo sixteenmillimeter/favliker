@@ -46,11 +46,11 @@ function flag (name = null) {
 	if (name === null) {
 		return process.argv
 	} else {
-		single = name[0] //first letter of full-length argument
-		if (process.argv.indexOf(single) !== -1 && process.argv.indexOf(name) !== -1) {
-			return false
-		} else {
+		single = name[0] //first letter of full-length flag name
+		if (process.argv.indexOf(`-${single}`) !== -1 || process.argv.indexOf(`--${name}`) !== -1) {
 			return true
+		} else {
+			return false
 		} 
 	}
 }
@@ -155,8 +155,9 @@ function sendTweet (tweet) {
 		if (err) {
 			return res.error('sendTweet', { error : err })
 		}
+		//console.log(response)
   		res.info('status/update', { statusCode : response.statusCode, data : data })
-  		res.info('posted', { id : uuid.v4(), tweet : tweet, time : (+new Date() - start) })
+  		res.info('sendTweet', { id : uuid.v4(), tweet : tweet, time : (+new Date() - start) })
   		return process.exit()
 	})
 }
