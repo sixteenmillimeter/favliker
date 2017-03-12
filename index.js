@@ -139,7 +139,7 @@ function runMarkov () {
 		if (last === ',') {
 			s[s.length - 1] = '.'
 		}
-		res.info('markov', {tweet: s, time: (+new Date() - time) })
+		res.info('markov', {id : uuid.v4(), tweet: s, time: (+new Date() - time) })
 		return sendTweet(s)
 	})
 }
@@ -156,17 +156,17 @@ function sendTweet (tweet) {
 			return res.error('sendTweet', { error : err })
 		}
   		res.info('status/update', { statusCode : response.statusCode, data : data })
-  		res.info('posted', { tweet : tweet, time : (+new Date() - start) })
+  		res.info('posted', { id : uuid.v4(), tweet : tweet, time : (+new Date() - start) })
   		return process.exit()
 	})
 }
 
 function processTweet (tweet) {
 	//TODO: render image of referenced tweet, skip for now and re-run
-	if (tweet.indexOf('twitter.com/') !== -1 || tweet.indexOf('://t.co/') !== -1) {
-		res.warn('processTweet', 'Contained tweet link, rerunning')
-		return runMarkov()
-	}
+	//if (tweet.indexOf('twitter.com/') !== -1 || tweet.indexOf('://t.co/') !== -1) {
+	//	res.warn('processTweet', 'Contained tweet link, rerunning')
+	//	return runMarkov()
+	//}
 	if (tweet === undefined || tweet === 'undefined' || typeof tweet === 'undefined') {
 		res.warn('processTweet', 'Tweet was undefined, rerunning')
 		return runMarkov()
