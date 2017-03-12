@@ -172,6 +172,10 @@ function processTweet (tweet) {
 		res.warn('processTweet', 'Tweet was undefined, rerunning')
 		return runMarkov()
 	}
+	if (tweet.length > 140) {
+		res.warn('processTweet', 'Tweet was too long, rerunning')
+		return runMarkov()
+	}
 
 	tweet = cleanTweet(tweet)
 	return tweet
