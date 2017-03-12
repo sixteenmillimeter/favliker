@@ -63,7 +63,7 @@ function flag (name = null) {
 const favPath = 'favorites/list'
 function getFavs () {
 	res.info('started', {found : ids.length} )
-	if (process.argv.indexOf('-f') !== -1 || process.argv.indexOf('--flat') !== -1) {
+	if (flag('file')) {
 		return runMarkov()
 	}
 	twit.get(favPath, { count : 200 }, (err, data, response) => {
