@@ -20,6 +20,8 @@
   "author": "mmcwilliams",
   "license": "MIT",
   "dependencies": {
-    "twitterbot": "^1.3.2"
+    "markovchain": "^1.0.2",
+    "twit": "^2.2.5",
+    "winston": "^2.3.1"
   }
 }
