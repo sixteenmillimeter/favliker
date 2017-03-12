@@ -22,6 +22,7 @@
   "dependencies": {
     "markovchain": "^1.0.2",
     "twit": "^2.2.5",
+    "uuid": "^3.0.1",
     "winston": "^2.3.1"
   }
 }

@@ -2,6 +2,7 @@
 
 const fs = require('fs')
 const Twit = require('twit')
+const uuid = require('uuid')
 const winston = require('winston')
 const MarkovChain = require('markovchain').MarkovChain
 
