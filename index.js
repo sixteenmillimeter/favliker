@@ -164,10 +164,10 @@ function sendTweet (tweet) {
 
 function processTweet (tweet) {
 	//TODO: render image of referenced tweet, skip for now and re-run
-	//if (tweet.indexOf('twitter.com/') !== -1 || tweet.indexOf('://t.co/') !== -1) {
-	//	res.warn('processTweet', 'Contained tweet link, rerunning')
-	//	return runMarkov()
-	//}
+	if (tweet.indexOf('twitter.com/') !== -1 || tweet.indexOf('://t.co/') !== -1) {
+		res.warn('processTweet', 'Contained tweet link, rerunning')
+		return runMarkov()
+	}
 	if (tweet === undefined || tweet === 'undefined' || typeof tweet === 'undefined') {
 		res.warn('processTweet', 'Tweet was undefined, rerunning')
 		return runMarkov()
